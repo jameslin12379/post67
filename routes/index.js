@@ -564,7 +564,7 @@ router.put('/users/:id', isResource, isAuthenticated, isOwnResource, upload.sing
         // delete associated image from bucket, update row from DB with email, username, description, imageurl
         // console.log(req.file);
         const uploadParams = {
-            Bucket: 'tivappbucket', // pass your bucket name
+            Bucket: 'post67appbucket', // pass your bucket name
             Key: 'profiles/' + req.file.originalname, // file will be saved as testBucket/contacts.csv
             Body: req.file.buffer,
             ContentType: req.file.mimetype
@@ -573,9 +573,9 @@ router.put('/users/:id', isResource, isAuthenticated, isOwnResource, upload.sing
             if (err) {
                 console.log("Error", err);
             } if (data) {
-                if (req.user.imageurl !== 'https://s3.amazonaws.com/tivappbucket/profiles/blank-profile-picture-973460_640+(1).png'){
+                if (req.user.imageurl !== 'https://s3.amazonaws.com/imageappbucket/profiles/blank-profile-picture-973460_640.png'){
                     const uploadParams2 = {
-                        Bucket: 'tivappbucket', // pass your bucket name
+                        Bucket: 'post67appbucket', // pass your bucket name
                         Key: 'profiles/' + req.body.imageurl.substring(req.body.imageurl.lastIndexOf('/') + 1) // file will be saved as testBucket/contacts.csv
                     };
                     s3.deleteObject(uploadParams2, function(err, data) {
